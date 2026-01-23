@@ -29,6 +29,7 @@ jobs:
         
     - name: Embold Analyse
       run: |
+        export EMB_PARSER_THREADS=4
         curl ${{ vars.EMBOLD_SCANNER_URL}} -o browserstack-codequality-scanner-archive.tar.gz
         tar xvf browserstack-codequality-scanner-archive.tar.gz
         echo "Download and extract BrowserStack CQ Scanner done"
