@@ -22,6 +22,20 @@ jobs:
     - name: Install Java for Embold & SonarScanner
       run: |
         apt-get install openjdk-17-jre -y 
+
+    - name: Install premake5
+      run: |
+        # Download and extract
+        wget https://github.com/premake/premake-core/releases/download/v5.0.0-beta2/premake-5.0.0-beta2-linux.tar.gz
+        tar -xvf premake-5.0.0-beta2-linux.tar.gz
+        
+        # Make it executable
+        chmod +x premake5
+        
+        # Move to a known bin folder and add to GitHub's environment PATH
+        mkdir -p $HOME/bin
+        mv premake5 $HOME/bin/
+        echo "$HOME/bin" >> $GITHUB_PATH
         
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
